@@ -71,7 +71,7 @@ Methodology: We optimized the weights for each metric to maximize the average re
 
 $$ max Z=ARR\left(\mathrm{average\ rate\ of\ return}\right)$$
 $$s.t.\;\;w_1+w_2+w_3+w_4+w_5=1$$
-    $$w_i=range\left(0,\ 1,\ 0.05\right)\emsp\left(1\le i\le5\right)$$
+    $$w_i=range\left(0,\ 1,\ 0.05\right) \left(1\le i\le5\right)$$
 
 
 ### IV. Tools
