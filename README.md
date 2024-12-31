@@ -23,35 +23,35 @@ CNN's Fear & Greed Index quantifies the emotional tone of the market by measurin
 
 ### II. Our Fear-Greed Index
 
-##### 1. Momentum (Higher = Greed, Lower = Fear)
+#### 1. Momentum (Higher = Greed, Lower = Fear)
    
 - Original CNN Fear-Greed Index Factor: Market Momentum
 - Our Method: Measured by comparing the closing price of a specific ETF to its moving average over the previous 12 months (252 trading days).
 - Variation: The existing CNN Index measures market-wide momentum using a 125 trading day moving average of the S&P 500 Index. We used a 252 trading day moving average to assess market momentum for individual ETFs
 - Reference : Time series momentum - Moskowitz, T. J., Ooi, Y. H., & Pedersen, L. H. (2012)
 
-##### 2. demand for safe-haven assets (Higher = Fear, Lower = Greed)
+#### 2. Demand for Safe-Haven Assets (Higher = Fear, Lower = Greed)
    
 - Original CNN Fear-Greed Index Factor: Safe Haven Demand
 - Our method: Calculated using the difference between the 1-month (20-trading day) return of a specific ETF and the 1-month (20-trading day) return of the U.S. Treasury
 - Variation: The CNN Fear-Greed Index uses the yield differential between U.S. Treasuries and stocks to assess market-wide safe haven appetite. While applying the same approach to reflect market conditions for individual ETF assets, we determined that calculating returns based on 20 trading days better reflects the market risk of individual assets
 - Reference : VKOSPI 지수를 이용한 단기 주가수익률 예측에 관한 연구 : 이정환, 손삼호, 이건희 (2024)
 
-##### 3. Positive-Negative Trade (Higher = Greed, Lower = Fear)
+#### 3. Positive-Negative Trade (Higher = Greed, Lower = Fear)
    
 - Original CNN Fear-Greed Index Factor: Stock Price Breadth
 - Our method: Calculates the difference between the positive and negative trading volume of the individual equity holdings that make up an ETF
 - Variation: The CNN index compares positive and negative volume across the market as a whole. Given that ETF assets are composed of individual stocks and derivatives, we sum positive and negative trading volume only for the stock assets included in the ETF. This variation was necessary for a more accurate volume-based sentiment analysis because derivatives do not reflect the direct price movement of stocks.
 - Reference : 김근택. (2021). 레버리지, 인버스ETF의 개인 매수/매도 데이터의 투자심리지수 유용성과 활용성
 
-##### 4. Bid/Ask Price Ratio (Higher = Greed, Lower = Fear)
+#### 4. Bid/Ask Price Ratio (Higher = Greed, Lower = Fear)
    
 - Original CNN Fear-Greed Index Factor: Put and Call Options Ratio (Put and Call Options)
 - Our method: Uses a ratio that takes into account the number of trades executed and the price of the trades.
 - Variation: The CNN index uses options market data, but our data did not have options information. Instead, we utilized the number of bids and offers and trade sizes to reflect market sentiment. We include trade size because large capital flows may be more important. We believe this approach can reflect market sentiment similarly to the put/call ratio.
 - Reference : 투자 주체별 거래행태의 특징이 주식시장 수익률에 미치는 영향 - 백기태*・민병길**・백지원***
 
-##### 5. Volatility vs. Volume Index (Higher = Fear, Lower = Greed)
+#### 5. Volatility vs. Volume Index (Higher = Fear, Lower = Greed)
    
 - Existing CNN Fear-Greed Index Factor: Market Volatility
 - Current method: Combining (high-low)/volume with the standard deviation of the closing price/volume metric
