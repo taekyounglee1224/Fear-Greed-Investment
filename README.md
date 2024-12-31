@@ -2,73 +2,92 @@
 
 ### 0. Introduction
 
-투자자들은 종종 개인적 감정과 심리에 의해 투자 결정을 내리며, 시장에서 공포와 탐욕 같은 극단적인 감정이 표현될 때 비합리적인 행동을 보이기 쉽다. 예를 들어, 시장이 탐욕에 사로잡힐 경우 시장은 과대평가될 가능성이 있으며, 공포가 지배할 경우 과소평가될 위험이 커진다. 이러한 감정의 변화는 투자자들이 시장에서 철수하거나 진입할 시점을 판단하는 데 영향을 미친다. 따라서 투자자는 감정에 휘둘리지 않고 장기적인 투자 목표를 유지함으로써 시장 변동을 효과적으로 관리할 수 있어야 하고, 이를 위한 전략으로 공포-탐욕 투자 전략을 전개할 수 있다.
+Investors often make investment decisions based on personal emotions and psychology, and are prone to irrational behavior when extreme emotions such as fear and greed are expressed in the market. For example, when the market is gripped by greed, the market has the potential to be overvalued, and when fear takes over, the risk of being undervalued increases. These emotional swings affect how investors decide when to exit or enter the market. Therefore, investors need to be able to effectively manage market fluctuations by not letting their emotions get the best of them and maintaining their long-term investment goals, which is where the fear-greed investment strategy comes in.
+
 
 <img width="204" alt="image" src="https://github.com/user-attachments/assets/90e2aa80-06d6-43cb-9007-f3d3579f2fe2" />
 
 ### I. 공포-탐욕지수란?
 
-CNN에서 발표하는 Fear & Greed Index로, 주식 심리 지수를 나타낸다
-CNN의 공포와 탐욕 지수(Fear & Greed Index)는 투자자들의 심리 상태를 측정하여 시장의 감정적 분위기를 수치화한 지표로, 0에서 100까지의 범위를 갖는다. 100에 가까울수록 극단적인 탐욕 상태를, 0에 가까울수록 극단적인 공포 상태를 나타낸다. “공포에 사서 탐욕에 팔아라”라는 명언에 따라 지수가 낮을 때 매수, 높을 때 매도 전략을 취한다.
+The Fear & Greed Index, published by CNN, is a measure of stock sentiment
+CNN's Fear & Greed Index quantifies the emotional tone of the market by measuring the state of mind of investors and ranges from 0 to 100. A reading closer to 100 indicates extreme greed, while a reading closer to 0 indicates extreme fear. The strategy is to buy when the index is low and sell when it is high, following the saying “buy on fear, sell on greed”.
 
-- 1.	시장 모멘텀 (Market Momentum): 이전 125거래일 이동평균
-- 2.	주가 강도 (Stock Price Strength): 뉴욕증권거래소에서 52주 신고가를 기록한 주식 수와 52주 신 저가를 기록한 주식 수의 비율.
-- 3.	주가 폭 (Stock Price Breadth): 상승 주식의 거래량과 하락 주식의 거래량 차이.
-- 4.	풋/콜 옵션 비율 (Put and Call Options): 풋-옵션과 콜옵션의 비율.
-- 5.	시장 변동성 (Market Volatility): VIX 지수를 활용하여 시장의 변동성 측정
-- 6.	안전자산 수요 (Safe Haven Demand): 미국 국채와 주식 수익률의 차이
-- 7.	정크본드 수요 (Junk Bond Demand): 정크본드와 국채 수익률의 스프레드
+- 1. Market Momentum: Moving average of the previous 125 trading days
+- 2. Stock Price Strength: The ratio of the number of stocks with new 52-week highs to the number of stocks with new 52-week lows on the New York Stock Exchange.
+- 3. Stock Price Breadth: The difference between the volume of rising stocks and falling stocks.
+- 4. Put and Call Options Ratio: The ratio of put-options to call-options.
+- 5. Market Volatility: Measures the volatility of the market utilizing the VIX index.
+- 6. Safe Haven Demand: The difference between U.S. Treasury and equity yields.
+- 7. Junk Bond Demand: The spread between junk bond and Treasury yields.
 
-### II. 우리의 공포-탐욕지수
 
-1. Momentum (높을 수록 탐욕, 낮을 수록 공포)
+### II. Our Fear-Greed Index
+
+1. Momentum (Higher = Greed, Lower = Fear)
    
--	기존 CNN 공포-탐욕 지수 반영 요소: 시장 모멘텀 (Market Momentum)
--	현재 방식: 특정 ETF의 종가와 이전 12개월(252 거래일) 이동평균을 비교하여 측정한다.
--	변형 사항 : 기존 CNN 지수는 S&P 500 지수의 125 거래일 이동평균을 사용하여 시장 전체의 모멘텀을 측정한다. 우리는 개별 ETF의 시장 모멘텀을 평가하기 위해 252 거래일 이동평균을 사용했다
--	근거 : Time series momentum - Moskowitz, T. J., Ooi, Y. H., & Pedersen, L. H. (2012)
+- Original CNN Fear-Greed Index Factor: Market Momentum
+- Our Method: Measured by comparing the closing price of a specific ETF to its moving average over the previous 12 months (252 trading days).
+- Variation: The existing CNN Index measures market-wide momentum using a 125 trading day moving average of the S&P 500 Index. We used a 252 trading day moving average to assess market momentum for individual ETFs
+- Reference : Time series momentum - Moskowitz, T. J., Ooi, Y. H., & Pedersen, L. H. (2012)
 
-2. 안전자산 수요 (높을수록 공포, 낮을수록 탐욕)
+2. demand for safe-haven assets (Higher = Fear, Lower = Greed)
    
-- 기존 CNN 공포-탐욕 지수 반영 요소: 안전자산 수요 (Safe Haven Demand)
-- 현재 방식: 특정 ETF의 1개월(20 거래일) 수익률과 미국 국채의 1개월(20 거래일) 수익률 차이를 이용해 산출
-- 변형 사항: CNN 공포-탐욕 지수는 미국 국채와 주식의 수익률 차이를 사용해 시장 전반의 안전자산 선호도를 평가한다. 우리는 개별 ETF 자산의 시장 상황을 반영하기 위해 동일한 접근 방식을 적용하면서, 20 거래일을 기준으로 수익률을 산출하는 것이 개별 자산의 시장 위험을 더 잘 반영한다고 판단했다
-- 근거:  “VKOSPI 지수를 이용한 단기 주가수익률 예측에 관한 연구” : 이정환, 손삼호, 이건희 (2024)
+- Original CNN Fear-Greed Index Factor: Safe Haven Demand
+- Our method: Calculated using the difference between the 1-month (20-trading day) return of a specific ETF and the 1-month (20-trading day) return of the U.S. Treasury
+- Variation: The CNN Fear-Greed Index uses the yield differential between U.S. Treasuries and stocks to assess market-wide safe haven appetite. While applying the same approach to reflect market conditions for individual ETF assets, we determined that calculating returns based on 20 trading days better reflects the market risk of individual assets
+- Reference : VKOSPI 지수를 이용한 단기 주가수익률 예측에 관한 연구 : 이정환, 손삼호, 이건희 (2024)
 
-3. Positive-Negative 거래량 (높을수록 탐욕, 낮을수록 공포)
+3. Positive-Negative Trade (Higher = Greed, Lower = Fear)
    
-- 기존 CNN 공포-탐욕 지수 반영 요소: 주가 폭 (Stock Price Breadth)
-- 현재 방식: ETF를 구성하는 개별 주식 자산들의 긍정적 거래량과 부정적 거래량의 차이를 계산
-- 변형 사항: CNN 지수는 시장 전체의 상승 및 하락 거래량을 비교한다. 우리는 ETF 자산이 개별 주식과 파생상품으로 구성된다는 점을 고려해, ETF에 포함된 주식 자산에 대해서만 긍정-부정 거래량을 합산하였다. 이는 파생상품이 주식의 직접적인 가격 움직임을 반영하지 않기 때문에, 보다 정확한 거래량 기반 심리 분석을 위해 이렇게 변형할 필요가 있었다
-- 근거: 김근택. (2021). 레버리지, 인버스ETF의 개인 매수/매도 데이터의 투자심리지수 유용성과 활용성
+- Original CNN Fear-Greed Index Factor: Stock Price Breadth
+- Our method: Calculates the difference between the positive and negative trading volume of the individual equity holdings that make up an ETF
+- Variation: The CNN index compares positive and negative volume across the market as a whole. Given that ETF assets are composed of individual stocks and derivatives, we sum positive and negative trading volume only for the stock assets included in the ETF. This variation was necessary for a more accurate volume-based sentiment analysis because derivatives do not reflect the direct price movement of stocks.
+- Reference : 김근택. (2021). 레버리지, 인버스ETF의 개인 매수/매도 데이터의 투자심리지수 유용성과 활용성
 
-4. 매수/매도 대금비율 (높을수록 탐욕, 낮을수록 공포)
+4. Bid/Ask Price Ratio (Higher = Greed, Lower = Fear)
    
-- 기존 CNN 공포-탐욕 지수 반영 요소: 풋/콜 옵션 비율 (Put and Call Options)
-- 현재 방식: 매수와 매도의 체결 수량 및 거래 대금을 고려한 비율을 사용.
-- 변형 사항: CNN 지수는 옵션 시장 데이터를 사용하지만, 우리의 데이터에는 옵션 정보가 없었다. 대신, 매수와 매도의 체결 수량과 거래 대금을 활용하여 시장의 투자 심리를 반영하였다. 거래 대금까지 포함한 이유는 큰 자본의 흐름이 더 중요할 수 있기 때문이다. 이러한 접근 방식은 풋/콜 비율과 유사하게 시장 심리를 반영할 수 있다고 판단하였다
-- 근거 : 투자 주체별 거래행태의 특징이 주식시장 수익률에 미치는 영향 - 백기태*・민병길**・백지원***
+- Original CNN Fear-Greed Index Factor: Put and Call Options Ratio (Put and Call Options)
+- Our method: Uses a ratio that takes into account the number of trades executed and the price of the trades.
+- Variation: The CNN index uses options market data, but our data did not have options information. Instead, we utilized the number of bids and offers and trade sizes to reflect market sentiment. We include trade size because large capital flows may be more important. We believe this approach can reflect market sentiment similarly to the put/call ratio.
+- Reference : 투자 주체별 거래행태의 특징이 주식시장 수익률에 미치는 영향 - 백기태*・민병길**・백지원***
 
-5. 변동성 대비 거래량 지수 (높을수록 공포, 낮을수록 탐욕)
+5. Volatility vs. Volume Index (Higher = Fear, Lower = Greed)
    
-- 기존 CNN 공포-탐욕 지수 반영 요소: 시장 변동성 (Market Volatility)
-- 현재 방식: (고가-저가)/거래량과 종가의 표준편차/거래량의 지표를 결합하여 산출
-- 변형 사항 : CNN 지수는 VIX를 사용해 시장 변동성을 측정한다. 우리는 개별 ETF 자산의 변동성을 거래량과 연관 지어 산출하였다. 이는 변동성과 거래량의 관계가 투자자 심리와 밀접한 연관이 있다는 점을 반영한다. 변동성 대비 거래량 지수의 산출 근거는 시장에서 변동성과 거래량의 조합이 심리적 신호로 작용한다는 점에서 확립된 연구들을 참고하였다
+- Existing CNN Fear-Greed Index Factor: Market Volatility
+- Current method: Combining (high-low)/volume with the standard deviation of the closing price/volume metric
+- Variation: The CNN Index uses the VIX to measure market volatility. We calculate the volatility of individual ETF assets by correlating it to their trading volume. This reflects the fact that the relationship between volatility and volume is closely linked to investor sentiment. The rationale for the volatility-volume index is based on established research that shows the combination of volatility and volume in the market acts as a psychological signal
+  
 
+### III. Methodology
+#### 1) Index Scaling
+For each of the five metrics we calculated, we applied the min-max scaling method to normalize each of them to a value between 0 and 1, and then multiplied it by 100 to give it a value between 0 and 100. We converted them into indicators and calculated the Fear-Greed Index, which has a value between 0 and 100, through a weighted sum
 
-### III. 지수 스케일링
-
-우리가 산출한 5가지 지표에 대해서 각각을 min-max scaling 방법을 적용하여 0 ~ 1 사이로 정규화 하였고, 이 값에 100을 곱하여 0 ~ 100 사이의 값을 갖도록 변경하였다. 지표로 변경하여 이들에 대한 가중합을 통해 0 ~ 100 사이의 값을 갖는 공포-탐욕지수를 계산하였다.
-근거 : CNN 홈페이지에서도 각 지표를 0~100사이로 스케일링 했다고 설명한다
 출처 : https://edition.cnn.com/markets/fear-and-greed
 
 
-### IV. 가중치 선정
-방법론 : 각 지표에 대한 가중치를 0 ~ 1사이의 값으로 두고, 단위는 0.05로 설정하여 평균 수익률을 극대화 하는 방법으로 가중치를 최적화하였다.
 
-$$ max Z=ARR\left(\mathrm{average\ rate\ of\ return}\right)
-s.t.\;\;w_1+w_2+w_3+w_4+w_5=1
-    w_i=range\left(0,\ 1,\ 0.05\right)\emsp\left(1\le i\le5\right)$$
+#### 2) Weight Parameter
+Methodology: We optimized the weights for each metric to maximize the average return by setting the weight between 0 and 1 and the unit to 0.05.
+
+$$ max Z=ARR\left(\mathrm{average\ rate\ of\ return}\right)$$
+$$s.t.\;\;w_1+w_2+w_3+w_4+w_5=1$$
+    $$w_i=range\left(0,\ 1,\ 0.05\right)\emsp\left(1\le i\le5\right)$$
+
+
+### IV. Tools
+
+- Python 3.11
+- Microsoft Azure
+- Tableau
+
+### V. References
+
+- Time series momentum - Moskowitz, T. J., Ooi, Y. H., & Pedersen, L. H. (2012)
+- VKOSPI 지수를 이용한 단기 주가수익률 예측에 관한 연구 : 이정환, 손삼호, 이건희 (2024)
+- 레버리지, 인버스ETF의 개인 매수/매도 데이터의 투자심리지수 유용성과 활용성 : 김근택. (2021)
+- 투자 주체별 거래행태의 특징이 주식시장 수익률에 미치는 영향 - 백기태*・민병길**・백지원***
+- https://edition.cnn.com/markets/fear-and-greed
+
 
 
 
