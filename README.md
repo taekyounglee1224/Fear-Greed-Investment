@@ -7,7 +7,7 @@ Investors often make investment decisions based on personal emotions and psychol
 
 <img width="204" alt="image" src="https://github.com/user-attachments/assets/90e2aa80-06d6-43cb-9007-f3d3579f2fe2" />
 
-### I. 공포-탐욕지수란?
+### I. What is Fear-Greed Index?
 
 The Fear & Greed Index, published by CNN, is a measure of stock sentiment
 CNN's Fear & Greed Index quantifies the emotional tone of the market by measuring the state of mind of investors and ranges from 0 to 100. A reading closer to 100 indicates extreme greed, while a reading closer to 0 indicates extreme fear. The strategy is to buy when the index is low and sell when it is high, following the saying “buy on fear, sell on greed”.
